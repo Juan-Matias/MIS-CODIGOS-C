@@ -1,0 +1,125 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <locale.h>
+
+int MI =28;
+char Alfabeto[28];
+char obtenerEncriptado(char Alfabeto[MI], char caracter);
+char obtenerDesencriptado(char Alfabeto[MI], char caracter);
+int obtenerCantida(char Alfabeto[MI]);
+
+int main() {
+	char Alfabeto[]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N',165,'O','P','Q','R','S','T','U','V','W','X','Y','Z',32};
+	char Texto[100];
+	char TextoP[100];
+	int opcion, i;
+	
+	printf(" |--Encriptacion Julio Cesar-----|\n");
+	printf(" |-------------------------------|\n");
+	printf(" | 1..Encriptar                  \n ");
+	printf("| 2..desencriptar				 \n ");
+	
+	scanf("%d[^\n]",&opcion);
+	
+	fflush(stdin);
+   
+   switch(opcion){
+   	
+		case 1:
+		 printf("Encriptar mensaje: ");
+		scanf("%[^\n]",&Texto);
+		fflush(stdin);	
+		for(i=0;i<50;i++){
+		TextoP[i]=obtenerEncriptado(Alfabeto, toupper(Texto[i]));
+		printf("%c",TextoP[i]);
+	}
+	
+		break;	
+		case 2:
+		printf("desencriptar mensaje: ");
+	    scanf("%[^\n]",&Texto);
+	    fflush(stdin);
+		for(i=0;i<50;i++){	
+		TextoP[i]=obtenerDesencriptado(Alfabeto, toupper(Texto[i]));
+		printf("%c",TextoP[i]);
+	}
+	
+		break;				
+		default:
+	    printf("Ingrese una opcion valida");
+		break;
+	}
+}
+
+
+char obtenerEncriptado(char Alfabeto[MI], char caracter){
+	int c, i, e;
+	char carEnc= ' ';
+	for(c=0;c<MI;c++){
+		if(Alfabeto[c]==caracter){
+			i++;
+			if((i+1)%2==0){
+				//Derecha
+					if(c<3){
+					e=28-3;	
+					carEnc=Alfabeto[e+c];
+						break;	
+						}else{
+						  	carEnc=Alfabeto[c-3];
+							break;
+			}
+			} else {//Izquierda	
+			if(c>24){
+			 e=c-MI;	
+			 carEnc=Alfabeto[e+3];
+			 break;
+				}else{
+				 carEnc=Alfabeto[c+3];
+				 break;
+		}
+		}
+			}
+		}	
+		return carEnc;
+	}
+	
+obtenerCantida(char Alfabeto[MI]){
+	int i,c;
+		for(c=0;c<MI;c++){
+		i++;	
+		}
+	return c;
+}
+
+char obtenerDesencriptado(char Alfabeto[MI], char caracter){
+	int c, i, e;
+	char carEnc= ' ';
+	for(c=0;c<MI;c++){
+		if(Alfabeto[c]==caracter){
+			i++;
+			if((i+1)%2==0){
+				//Derecha
+				if(c>24){
+				e=c-MI;	
+				carEnc=Alfabeto[e+3];
+					break;
+					}else{
+					carEnc=Alfabeto[c+3];
+					break;
+		}
+			} else {
+				//Izquierda
+				if(c<3){
+				e=28-3;	
+				carEnc=Alfabeto[e+c];
+				break;	
+				 }else{
+					carEnc=Alfabeto[c-3];
+					break;
+			}
+		}
+			}
+		}	
+		return carEnc;
+	}

@@ -1,0 +1,203 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <String.h>
+
+int Acreditacion=4;
+int Comprobar=4;
+char aBeca1[4];
+char aBeca2[4];
+char aBeca3[4];
+char aBeca4[4];
+char aBeca5[4];
+
+char aComprobar[4];
+
+void mostrarAcreditacion(char aAcreditacion[4]);
+
+void mostrarcomprobacion (char aComprobar[4]);
+int obtenerAcreditaciones(char aAcreditacion[4],char tipoA );
+char obtenerBeca1(char long1, char long2, char arr1[],char arr2[]);
+char obtenerBeca2(char long1, char long2, char arr1[],char arr2[]);
+
+char obtenerBeca3(char long1, char long2, char arr1[],char arr2[]);
+char obtenerBeca4(char long1, char long2, char arr1[],char arr2[]);
+char obtenerBeca5(char long1, char long2, char arr1[],char arr2[]);
+void mostrarResultado(char run[30],char nombreAlumno[30],float NEM,int PSU,char beca1,char beca2,char beca3,char beca4,char beca5);
+
+
+
+int main() {
+	char run[30];
+	char nombreAlumno[30];
+	float NEM;
+	int PSU;
+	char aBeca1[4]={'N','S','S','N'};//Beca 1 NEM > 5 y PSU>=550
+	char aBeca2[4]={'N','S','S','S'};
+	char aBeca3[4]={'S','S','N','S'};
+	char aBeca4[4]={'N','S','N','S'};
+	char aBeca5[5]={'S','N','N','S'};
+	char aComprobar[4]={' ',' ',' ',' '};
+	
+	printf("Ingrese su run: \n");
+	scanf("%s",&run);
+	printf("Ingrese su nombre : \n");
+	scanf("%s",&nombreAlumno);	
+	printf("Ingrese su NEM  : \n");
+	scanf("%f",&NEM);
+	printf("Ingrese su PSU : \n");
+	scanf("%d",&PSU);
+	
+	printf("si acredita participación en una organización (S o N) \n");
+	scanf("%s", &aComprobar[0]);
+	printf("Informe socioeconómico (S o N) \n");
+	scanf("%s", &aComprobar[1]);
+	printf("Deportista destacado (S o N) \n");
+	scanf("%s", &aComprobar[2]);
+	printf("acredita ser miembro de comunidades minoritarias (S o N)\n");
+	scanf("%s", &aComprobar[3]);
+	
+	mostrarcomprobacion(aComprobar);
+
+		// Obtener su longitud para llamar a función
+		
+			char longBeca1 = sizeof(aBeca1) / sizeof(aBeca1[0]);
+			char longComprobar = sizeof(aComprobar) / sizeof(aComprobar[0]);
+			char beca1 = obtenerBeca1(longBeca1,longComprobar,aBeca1, aComprobar);
+			
+			char longBeca2 = sizeof(aBeca2) / sizeof(aBeca2[0]);
+			char longComprobar2 = sizeof(aComprobar) / sizeof(aComprobar[0]);
+			char beca2 = obtenerBeca2(longBeca2,longComprobar2,aBeca2, aComprobar);
+			
+			char longBeca3 = sizeof(aBeca3) / sizeof(aBeca3[0]);
+			char longComprobar3 = sizeof(aComprobar) / sizeof(aComprobar[0]);
+			char beca3 = obtenerBeca3(longBeca3,longComprobar3,aBeca3, aComprobar);
+			
+			char longBeca4 = sizeof(aBeca4) / sizeof(aBeca4[0]);
+			char longComprobar4 = sizeof(aComprobar) / sizeof(aComprobar[0]);
+			char beca4 = obtenerBeca4(longBeca4,longComprobar4,aBeca4, aComprobar);
+			
+			char longBeca5 = sizeof(aBeca5) / sizeof(aBeca5[0]);
+			char longComprobar5 = sizeof(aComprobar) / sizeof(aComprobar[0]);
+			char beca5 = obtenerBeca1(longBeca5,longComprobar5,aBeca5, aComprobar);	
+			
+			mostrarResultado(run,nombreAlumno,NEM, PSU, beca1, beca2, beca3, beca4, beca5);	
+  
+
+
+	}
+	
+void mostrarcomprobacion (char aComprobar[4]){
+		int f;
+		for(f=0;f<Comprobar;f++){
+		printf("[%c]",aComprobar[f]);
+	}
+	printf("\n");
+	}
+
+char obtenerBeca1(char long1, char long2, char arr1[],
+                       char arr2[]) {
+  if (long1 != long2) {
+    return 0;
+  }
+  int i;
+  for (i = 0; i < long1; i++) {
+    char longitudBeca1 = arr1[i], longitudComprobar = arr2[i];
+    if (longitudBeca1 != longitudComprobar) {
+      return 0;  
+    }
+  }
+
+  return 1;
+}
+char obtenerBeca2(char long1, char long2, char arr1[],
+                       char arr2[]) {
+  if (long1 != long2) {
+    return 0;
+  }
+  int i;
+  for (i = 0; i < long1; i++) {
+    char longitudBeca1 = arr1[i], longitudComprobar = arr2[i];
+    if (longitudBeca1 != longitudComprobar) {
+      return 0;  
+    }
+  }
+
+  return 1;
+}
+
+char obtenerBeca3(char long1, char long2, char arr1[],
+                       char arr2[]) {
+  if (long1 != long2) {
+    return 0;
+  }
+  int i;
+  for (i = 0; i < long1; i++) {
+    char longitudBeca1 = arr1[i], longitudComprobar = arr2[i];
+    if (longitudBeca1 != longitudComprobar) {
+      return 0;  
+    }
+  }
+
+  return 1;
+}
+
+char obtenerBeca4(char long1, char long2, char arr1[],
+                       char arr2[]) {
+  if (long1 != long2) {
+    return 0;
+  }
+  int i;
+  for (i = 0; i < long1; i++) {
+    char longitudBeca1 = arr1[i], longitudComprobar = arr2[i];
+    if (longitudBeca1 != longitudComprobar) {
+      return 0;  
+    }
+  }
+
+  return 1;
+}
+char obtenerBeca5(char long1, char long2, char arr1[],
+                       char arr2[]) {
+  if (long1 != long2) {
+    return 0;
+  }
+  int i;
+  for (i = 0; i < long1; i++) {
+    char longitudBeca1 = arr1[i], longitudComprobar = arr2[i];
+    if (longitudBeca1 != longitudComprobar) {
+      return 0;  
+    }
+  }
+
+  return 1;
+}
+
+void mostrarResultado(char run[30],char nombreAlumno[30],float NEM,int PSU,char beca1,char beca2,char beca3,char beca4,char beca5){
+	printf("\nrun del Estudiante  	   :%s \n", run);
+	printf("Nombre del Estudiante	   :%s \n", nombreAlumno);
+	printf("NEM del Estudiante	   :%f \n", NEM);
+	printf("PSU del Estudiante	   :%d \n", PSU);
+	if (beca1 &&NEM>5.0 &&PSU>=550) {
+		printf("SI beca 1 \n");
+	} else {
+		
+		printf("NO beca 1:  \n");
+	} if (beca2 &&PSU>=600) {
+    	printf("SI beca 2: \n");
+  	} else {
+    	printf("NO beca 2: \n");
+ 	} if (beca3 &&NEM>5.0) {
+    	printf("SI beca 3: \n");
+  	} else {
+    	printf("NO beca 3: \n");
+ 	}if (beca4 &&NEM>6.0) {
+    	printf("SI beca 4: \n");
+  	} else {
+    	printf("NO beca 4: \n");
+ 	}if (beca5 &&NEM>=4.5 &&PSU>=450 &&PSU<=550) {
+    	printf("SI beca 5 :\n");
+  	} else {
+    	printf("NO beca 5 :\n");
+ 	}
+	
+}

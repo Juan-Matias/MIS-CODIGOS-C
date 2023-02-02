@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int dPiso = 3;
+int dFila = 3;
+int dColumna = 3;
+
+       //piso filas columna
+int aDepto[3][3][3];
+int aPiso[3][3]; 
+int aPromedioxPiso[3]; // Tenemos tres pisos
+
+void mostrarEdificio(int aDepto[3][3][3]);
+int obtenerPromedioxPiso(int aPiso[3][3]);
+void mostrarPromedioxPiso(int aPromedioxPiso[3]);
+
+int main() {
+	int aDepto[3][3][3] = {
+		{{5,6,7}, {7,0,7}, {0,0,0}}, // Primer Piso
+		{{3,4,7}, {5,0,2}, {0,0,0}}, // Segundo Piso
+		{{3,2,1}, {5,0,3}, {0,0,0}}, // Tercer Piso
+	};
+	
+	mostrarEdificio(aDepto);
+	
+	int p, f, c;
+	for(p = 0; p < dPiso; p++) {
+		for(f = 0; f < dFila; f++) {
+			for(c = 0; c < dColumna; c++) {
+				aPiso[f][c] = aDepto[p][f][c]; // Toma un piso que este listo
+			}
+		}
+		aPromedioxPiso[p] = obtenerPromedioxPiso(aPiso);
+	}
+	
+	mostrarPromedioxPiso(aPromedioxPiso);
+	
+}
+
+void mostrarEdificio(int aDepto[3][3][3]) {
+	// Por cada dimension se requiere un for
+	int p, f, c;
+	for(p = 0; p < dPiso; p++) {
+		printf("Piso %i \n ", p+1); // Indcara el numero del pisp
+		for(f = 0; f < dFila; f++) {
+			for(c = 0; c < dColumna; c++) {
+				printf("[%i] ", aDepto[p][f][c]);
+			}
+			printf("\n");
+		}
+		printf("\n");
+	}
+}
+
+int obtenerPromedioxPiso(int aPiso[3][3]) {
+	int f, c;
+	float sumaPersonaxP = 0.0f;
+	float contador = 0.0f;
+	int promPersonaxPiso;
+	
+	for(f = 0; f < dPiso; f++) {
+		for(c = 0; c < dFila; c++) {
+			if(aPiso[f][c] > 0) { // Para no considerar el 0
+				sumaPersonaxP += aPiso[f][c];
+				contador++;
+			}
+			
+		}
+	}
+	promPersonaxPiso = round(sumaPersonaxP / contador); // Promedio
+	return promPersonaxPiso;
+}
+
+void mostrarPromedioxPiso(int aPromedioxPiso[3]) {
+	int c;
+	
+	for(c = 0; c < dColumna; c++) {
+		printf("Promedio Piso %i es %i \n ", c+1, aPromedioxPiso[c]);
+	}
+	
+}

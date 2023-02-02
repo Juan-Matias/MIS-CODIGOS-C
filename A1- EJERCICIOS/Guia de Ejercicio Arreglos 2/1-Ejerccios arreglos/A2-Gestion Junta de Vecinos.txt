@@ -1,0 +1,119 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int AP=5;
+int RE=10;
+char aVotos[5][10];
+float Media=0.75F;
+
+void mostrarVotos(char aVotos[5][10]);
+
+int obtenerCantidadApruebo(char aVotos[AP][RE],char tipoAP);//Apruebo
+int obtenerCantidadRechazo(char aVotos[AP][RE],char tipoRE);//Rechazo
+int obtenerCantidadAbtiene(char aVotos[AP][RE],char tipoAB);//Abstiene
+
+float obtenerPorcVotos(int cantidadAP,int cantidadRE,int cantidadAB);//Porcentajes
+
+void mostrarResultados(int cantidadAP,int cantidadRE,int cantidadAB,
+					   char tipoAP,char tipoRE,char tipoAB,float prorcVotos);
+
+
+int main() {
+		char aVotos[5][10] = {
+		{'B','R','B','B','A','A','A','B','R','R'},
+		{'B','R','B','A','A','R','A','A','R','R'},
+		{'B','A','A','B','B','A','R','R','A','R'},
+		{'R','B','R','A','A','A','R','B','B','R'},
+		{'R','R','A','B','R','R','B','A','R','B'}
+	};	
+	//Llamar al Procedimiento
+	mostrarVotos(aVotos);
+	
+	int cantidadAP=obtenerCantidadApruebo(aVotos,'A');
+	int cantidadRE=obtenerCantidadRechazo(aVotos,'R');
+	int cantidadAB=obtenerCantidadAbtiene(aVotos,'B');
+	float prorcVotos=obtenerPorcVotos( cantidadAP,cantidadRE, cantidadAB);
+	
+	mostrarResultados(cantidadAP,cantidadRE,cantidadAB,'A','R','B',prorcVotos);
+	
+	
+	
+	
+}
+void mostrarVotos(char aVotos[5][10]){
+	int f,c;
+	for( f=0;f<AP;f++){
+		for( c=0;c<RE;c++){
+			printf("[%c]",aVotos[f][c]);
+		}
+		printf("\n");
+	}
+	
+}
+int obtenerCantidadApruebo(char aVotos[AP][RE],char tipoAP){
+	int f,c;
+	int cantidadApruebo=0;
+	
+	for(f=0;f<AP;f++){
+			for(c=0;c<RE;c++){
+				if(aVotos[f][c]==tipoAP){
+				
+				cantidadApruebo ++;
+			}
+		}
+	}
+	return cantidadApruebo;
+}
+int obtenerCantidadRechazo(char aVotos[AP][RE],char tipoRE){
+		int f,c;
+	int cantidadRechazo=0;
+	
+	for(f=0;f<AP;f++){
+			for(c=0;c<RE;c++){
+				if(aVotos[f][c]==tipoRE){
+				cantidadRechazo ++;
+			}
+		}
+	}
+	return cantidadRechazo;
+}
+int obtenerCantidadAbtiene(char aVotos[AP][RE],char tipoAB){
+			int f,c;
+	int cantidadAbstiene=0;
+	
+	for(f=0;f<AP;f++){
+			for(c=0;c<RE;c++){
+				if(aVotos[f][c]==tipoAB){
+				cantidadAbstiene ++;
+			}
+		}
+	}
+	return cantidadAbstiene;
+}
+
+float obtenerPorcVotos(int cantidadAP,int cantidadRE,int cantidadAB){
+	float porcVotos;
+	float Apruebo=cantidadAP;
+	float Rechazo=cantidadRE;
+	float Abstiene=cantidadAB;
+	float totalVotos=(Apruebo+Rechazo)*Media;
+	
+	if(totalVotos>=Media){
+		return totalVotos;
+	}else if(totalVotos<Media){
+		return totalVotos;
+	}else{
+		return Abstiene;
+	}
+}
+
+
+void mostrarResultados(int cantidadAP,int cantidadRE,int cantidadAB,char tipoAP,char tipoRE,char tipoAB,float prorcVotos){
+	printf(" Cantidad de Apruebo 	    : %i \n",cantidadAP);
+	printf(" Cantidad de Rechazo 	    : %i \n",cantidadRE);
+	printf(" Cantidad de Abstienen 	    : %i \n",cantidadAB);
+	printf(" Porcentaje Votos 	    :%6.2f\n",prorcVotos);
+}
+
+

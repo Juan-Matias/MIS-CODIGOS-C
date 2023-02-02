@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int DA=7;
+//declarar Arreglo Unidimensional
+float aTemp[7];
+//declarar las funcioones
+float obtenerTemperaturaMasAlta(float aTemp[DA]);
+float obtenerTemperaturaMasBaja(float aTemp[DA]);
+float obtenerTemperaturaPromedio(float aTemp[DA]);
+//declarar los procedimiento
+void mostrarResultados(float tempAlta,float tempBaja,float temPromedio);
+
+int main() {
+	//entrada de datps
+	float aTemp []={25.7, -2.6 , 26.5, 3.5, 24.8, 3.3, 19.9};
+	float tempAlta,tempBaja,tempPromedio;
+	
+	tempAlta=obtenerTemperaturaMasAlta(aTemp);
+	tempBaja=obtenerTemperaturaMasBaja(aTemp);
+	tempPromedio=obtenerTemperaturaPromedio(aTemp);
+	
+	mostrarResultados(tempAlta,tempBaja,tempPromedio);	
+}
+float obtenerTemperaturaMasAlta(float aTemp[DA]){
+	float tempMayor=aTemp[0];
+	int c;
+	for(c=1;c<DA;c++){
+		if(aTemp[c]>tempMayor){
+			tempMayor =aTemp[c];
+		}
+		return tempMayor;
+	}
+}
+
+float obtenerTemperaturaMasBaja(float aTemp[DA]){
+	float tempMenor=aTemp[0];
+	int c;
+	for(c=1;c<DA;c++){
+		if(aTemp[c]<tempMenor){
+			tempMenor =aTemp[c];
+		}
+		return tempMenor;
+	}
+	
+}
+
+float obtenerTemperaturaPromedio(float aTemp[DA]){
+	float sumaTemp=0;
+	int c;
+	for (c=0;c<DA;c++){
+		sumaTemp +=aTemp[c];
+	}
+	return sumaTemp /DA;
+	
+}
+
+void mostrarResultados(float tempAlta,float tempBaja,float tempPromedio){
+	
+	printf("\n|--Estadisticas Temperatura semanal--|\n",tempAlta);
+	printf("\n--------------------------------------\n");
+	printf("|--Temperatura mas alta :%5.2f       |\n",tempAlta);
+	printf("|--Temperatura mas baja :%5.2f       |\n",tempBaja);
+	printf("|--Temperatura promedio :%5.2f       |\n",tempPromedio);
+}

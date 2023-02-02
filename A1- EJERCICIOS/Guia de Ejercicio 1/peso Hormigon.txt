@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+int materialA=15;
+int materialB=25;
+int materialC=45;
+int materialD=5;
+
+float obtenerPesoHormigon(float peso, char tipo );
+void mostrarDatos(float Hormigon, char tipo, float peso);
+
+int main() {
+ float peso;
+ char tipo;
+ float Hormigon;
+ 
+ printf("Ingrese el Peso de Material \n");
+ scanf("%f",&peso);
+ 
+printf("Ingrese el tipo de Material \n");
+	 scanf("%s",&tipo);
+	
+Hormigon=obtenerPesoHormigon(peso,  tipo );
+	 mostrarDatos( Hormigon,  tipo, peso);
+	
+}
+float obtenerPesoHormigon(float peso, char tipo ){
+float resultado;
+	
+	
+	switch(tipo){
+		
+case 'A':
+ 
+
+	   resultado= peso* materialA/100 ;
+    return resultado;
+     
+     
+case 'B':
+   resultado= peso* materialB/100 ;
+    return resultado;
+    
+    
+case 'C':
+   resultado= peso* materialC/100 ;
+    return resultado;
+    
+    
+case 'D':		
+ resultado= peso* materialD/100 ;
+    return resultado;	
+	
+		
+		
+		
+	}	
+}
+void mostrarDatos(float Hormigon, char tipo, float peso){
+	printf("El tipo de material es %c \n",tipo);
+	printf("El peso del bloque es %5.4f \n",peso);
+	printf("El peso de hormigon es %5.0f \n",Hormigon);
+	
+	
+	
+	
+	
+}
+

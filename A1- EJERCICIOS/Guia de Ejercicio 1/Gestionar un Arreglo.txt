@@ -1,0 +1,26 @@
+
+#include <stdio.h>
+int buscarEnArreglo(const int arreglo[], int busqueda, int longitud);
+
+int main(void) {
+    // El arreglo en donde buscamos
+    int edades[] = {23, 25, 30, 15, 2};
+    // El valor que buscamos
+    int busqueda = 30;
+
+    int longitud = sizeof edades / sizeof edades[0];
+    
+    int existe = buscarEnArreglo(edades, busqueda, longitud);
+    
+    printf("Posicion de %d en arreglo: %d", busqueda, existe);
+    return 0;
+}
+
+
+int buscarEnArreglo(const int arreglo[], int busqueda, int longitud) {
+	int x;
+    for (x = 0; x < longitud; x++) {
+        if (arreglo[x] == busqueda) return x;
+    }
+    return -1;
+}

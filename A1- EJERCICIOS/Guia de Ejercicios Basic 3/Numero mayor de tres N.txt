@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+//Funciones
+float obtenerNroMayor(float numero1,float numero2);
+
+//Procedimiento
+void mostrarResultado(float numero1,float numero2,float numMayor);
+
+int main() {
+	// Declaracion
+	float numero1, numero2, numMayor;
+	// Entrada de datos
+	printf("Ingrese el primer numero : ");
+	scanf("%f", &numero1);
+	
+	printf("Ingrese el segundo numero : ");
+	scanf("%d", &numero2);
+	
+	// Proceso
+	numMayor=obtenerNroMayor(numero1,numero2);
+	
+	// Salida de datos
+	mostrarResultados(numero1,numero2,numMayor);
+}
+float obtenerNroMayor(float numero1,float numero2){
+	if(numero1>numero2) {
+		return numero1;
+
+ }return numero2;
+}
+
+
+void mostrarResultado(float numero1,float numero2,float numMayor) {
+	printf("Numero 1            : %f \n", numero1);
+	printf("Numero 2            : %f \n", numero2);
+	printf("Numero 3 		    : %f \n", numMayor);
+
+}

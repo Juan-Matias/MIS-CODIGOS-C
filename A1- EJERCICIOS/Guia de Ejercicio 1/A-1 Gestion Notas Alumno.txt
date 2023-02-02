@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <String.h>
+
+int DA = 4;
+
+float aNotas[4];
+float CANTIDAD_NOTAS=4.0F;
+
+int obtenerCantidadNotas(float  aNotas[]);
+float obtenerPromedio(float aNotas[]);
+char obtenerEstado(float promNotas);
+void mostrarResultados(char nombreAlumno[30],char nombreAsignatura[30],float  aNotas[],int cantNotas, float promNotas, char estado);
+
+int main() {
+	// Declaración de las variables
+	char nombreAlumno[30];
+	char nombreAsignatura[30];	
+	char estado;
+	float promNotas;
+	float  aNotas[] = {0.0F,0.0F,0.0F,0.0F};
+	// Entrada de Datos
+	printf("Ingrese nombre alumno : \n");
+	scanf("%s",&nombreAlumno);
+	printf("Ingrese la asignatura : \n");
+	scanf("%s",&nombreAsignatura);	
+	printf("Ingrese primera nota  : \n");
+	scanf("%f",&aNotas[0]);
+	printf("Ingrese segunda nota  : \n");
+	scanf("%f",&aNotas[1]);
+	printf("Ingrese tercera nota  : \n");
+	scanf("%f",&aNotas[2]);
+	printf("Ingrese cuarta nota  : \n");
+	scanf("%f",&aNotas[3]);			
+	// Proceso
+	int cantNotas = obtenerCantidadNotas(aNotas);
+
+	if(cantNotas==4){
+		promNotas=obtenerPromedio(aNotas);
+		estado=obtenerEstado(promNotas);
+	} else {
+		estado='P';
+	}
+	// Salida de Datos
+	mostrarResultados(nombreAlumno,nombreAsignatura,aNotas,cantNotas,promNotas,estado);
+	
+}
+int obtenerCantidadNotas(float  aNotas[DA]){
+	int c;
+	int cantNotas=0;
+	for(c=0;c<DA;c++){
+		if(aNotas[c]>0.0F){
+			cantNotas++;
+		}
+	}
+	return cantNotas;
+}
+float obtenerPromedio(float aNotas[]){
+	int c;
+	float sumaNotas,promNotas;
+	sumaNotas=0.0F;
+	for(c=0;c<DA;c++){
+		if(aNotas[c]>0.0F){
+			sumaNotas += aNotas[c];
+		}
+	}
+	promNotas=sumaNotas / CANTIDAD_NOTAS;
+	return promNotas;	
+}
+char obtenerEstado(float promNotas){n
+	if(promNotas < 3.95F){
+		return 'R';	
+	} 
+	return 'A';
+}
+void mostrarResultados(char nombreAlumno[30],char nombreAsignatura[30],float  aNotas[],int cantNotas,float promNotas, char estado){
+	printf("Nombre alumno      : %s \n", nombreAlumno);		
+	printf("Nombre aasignatura : %s \n", nombreAsignatura);			
+	int c;
+	for(c=0;c<DA;c++){
+		if(aNotas[c]>0.0F){
+			printf("Nota %i : %f \n", c+1, aNotas[c]);			
+		}
+	}
+	if(cantNotas == 4){
+		printf("Promedio de Notas  : %f \n", promNotas);		
+	}
+	printf("Estado del Alumno      : %s \n", (estado=='P'?"Pendiente":(estado=='A'?"Aprobado":"Reprobado")));
+}

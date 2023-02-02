@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int AC = 101;
+char archivo[101];
+
+int obtenerVerificacion(char archivo[101], char caracter);
+void mostrarResultados(float obtener1, float obtener2, float obtener3, float obtener4);
+
+int main() {
+	char archivo[]={'T','G','X','L','U','F','G','E','G','C', //1
+					'J','E','V','H','A','V','F','F','X','P', //2
+					'M','F','U','D','R','I','E','M','U','F', //3
+					
+					'Z','Y','M',165,'T','G','G','X','T','F', //4
+					'W','C','E','U','T','P','W','D','I',165, //5
+					'E','R','M','P','O','V','Y','Z','G','E', //6
+					
+					'J','E','R','D','E','O','C','E','E','G', //7
+					'C','U','V','K','R','Z','J','A','J','E', //8
+					165,'V','H','T','G','B','E','M','T','M', //9
+					
+					'A','T','O','E','J','G','X','R','B','V' //10
+			};
+	int contador;
+	
+	float obtener1 = obtenerVerificacion(archivo, toupper('J'));
+	float obtener2 = obtenerVerificacion(archivo, toupper('M'));
+	float obtener3 = obtenerVerificacion(archivo, toupper('G'));
+	float obtener4 = obtenerVerificacion(archivo, toupper('E'));
+	
+	mostrarResultados(obtener1, obtener2, obtener3, obtener4);
+}
+
+int obtenerVerificacion(char archivo[AC], char caracter) {
+	int c,contador=0;
+	
+	for(c=0; c<AC; c++) {
+		if(archivo[c] == caracter) {
+			contador++;
+		}	
+	}
+	
+	return (contador * AC) / 100;
+}
+
+void mostrarResultados(float obtener1, float obtener2, float obtener3, float obtener4) {
+	float resultado;
+	resultado = obtener1 + obtener2 + obtener3 + obtener4;
+	
+	printf("Resultados Analisis de Archivo \n");
+	printf("------------------------------ \n");
+	if(resultado >= 33) {
+		printf("Archivo contiene caracteres cifrados en un %4.2f por ciento. Por tanto, archivo esta cifrado. \n", resultado);
+	} else {
+		printf("Archivo contiene caracteres cifrados en un %4.2f por ciento. Por tanto, archivo no esta cifrado. \n", resultado);
+	}
+}
+

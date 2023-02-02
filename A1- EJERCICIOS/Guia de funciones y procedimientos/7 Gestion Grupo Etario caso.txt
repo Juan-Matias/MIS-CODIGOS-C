@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+char* obtenerGrupoEtario(int edad);
+void mostrarResultados(int edad,char*grupoEtario);
+
+int main() {
+	int edad;
+	char*grupoEtario;
+	
+	printf("Ingrese edad :");
+	scanf("%i",&edad);
+	
+	grupoEtario=obtenerGrupoEtario(edad);
+	
+	mostrarResultados(edad,grupoEtario);
+}
+char* obtenerGrupoEtario(int edad){
+	if(edad<18){
+		return "Menor de Edad";
+	}else{
+		if(edad <30){
+			return "Adulto Joven";
+		}else {
+			if(edad <65){
+				return "Adulto";
+			}else{
+				return "Adulto mayor";
+			}
+		}
+	}
+	}
+
+void mostrarResultados(int edad,char*grupoEtario){
+	printf("\n");
+	printf("|-- Grupo etario --                |\n");
+	printf("\n");
+	printf("| Edad		   :%i             |\n",edad);
+	printf("| Grupo etario       :%s |\n",grupoEtario);
+}
+	

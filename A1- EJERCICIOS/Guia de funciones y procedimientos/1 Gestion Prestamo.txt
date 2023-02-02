@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+float obtenerInteresesAcumulados(float tasaInteres,int plazo);
+float obtenerCuotas(float interesesAcumulados,int montoPrestamo,float tasaInteres);
+
+
+void mostrarResultado(float tasaInteres,int plazo,int montoPrestamo,int cuotas);
+
+int main() {
+	//declaracion de variables
+	float tasaInteres,interesesAcumulados;
+	int plazo,montoPrestamo, cuotas;
+		
+	//Entrada de datos
+	printf("Ingrese el monto de prestamo :");
+	scanf("%i",&montoPrestamo);
+	printf("Ingrese tasa de interes :");
+	scanf("%f",&tasaInteres);
+	printf("Ingrese el plazo :");
+	scanf("%i",&plazo);
+	
+	//Proceso
+	interesesAcumulados = obtenerInteresesAcumulados(tasaInteres,plazo);
+	cuotas=obtenerCuotas(interesesAcumulados,montoPrestamo,tasaInteres);
+	//salida de datos - INFORMACION [UX]
+	mostrarResultado(tasaInteres, plazo, montoPrestamo,cuotas);	
+}
+float obtenerInteresesAcumulados(float tasaInteres,int plazo){
+	float n=plazo;
+	float i=(1+tasaInteres);
+	return pow(i,n);
+	
+}
+
+float obtenerCuotas(float interesesAcumulados,int montoPrestamo,float tasaInteres){
+	int cuotas=montoPrestamo*((interesesAcumulados*tasaInteres)/(interesesAcumulados-1));
+	return cuotas;
+	
+}
+void mostrarResultado(float tasaInteres,int plazo,int montoPrestamo,int cuotas){
+	printf("Monto del prestamo 		:%i \n",montoPrestamo);
+	printf("Tasa de Interes 		:%5.2f \n",tasaInteres *100);
+	printf("Plazo del prestamo	 	:%i \n",plazo);
+	printf("Cuotas a Pagar 			:%i \n",cuotas);
+	
+}
+

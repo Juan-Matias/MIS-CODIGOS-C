@@ -1,0 +1,138 @@
+#include <stdio.h>
+#include <stdlib.h>
+int FT=12;
+int aFotografias[12];
+int CANTIDAD_FOTOGRAFIA=12;
+
+void mostrarFotografia(int aFotografias[]);
+int obtenerCantidadFotografia(int aFotografias[]);
+
+int obtenerPromedioPesado(int aFotografia[]);
+int obtenerPromedioMediano(int aFotografia[]);
+int obtenerPromedioLigero(int aFotografia[]);
+int obtenerPromedioMuyLigero(int aFotografia[]);
+
+void mostrarResultado(int  cantFotografia,int promPesado,int promMediano,int promLigero,int promMuyLigero);
+
+
+int main() {
+	int promPesado;
+	int promMediano;
+	int promLigero;
+	int promMuyLigero;
+	
+	int aFotografias[12]={873,448,603,1174,97,207,
+						  1016,95,694,645,743,1075};//12
+						  
+	mostrarFotografia(aFotografias);
+	int cantFotografia=obtenerCantidadFotografia(aFotografias);
+	
+	if(cantFotografia==12){
+		promPesado=obtenerPromedioPesado(aFotografias);
+		promMediano=obtenerPromedioMediano(aFotografias);
+		promLigero=obtenerPromedioLigero(aFotografias);
+		promMuyLigero=obtenerPromedioMuyLigero(aFotografias);	
+	}
+	
+	mostrarResultado( cantFotografia,promPesado,promMediano,promLigero,promMuyLigero);
+	
+						  
+	
+}
+
+void mostrarFotografia (int aFotografias[12]){
+		int c;
+		for(c=0;c<FT;c++){
+		printf("[%d]",aFotografias[c]);	
+	}
+	printf("\n");
+	}
+
+int obtenerCantidadFotografia(int aFotografias[FT]){
+	int c;
+	int cantFotografia=0;
+	for(c=0;c<FT;c++){
+		if(aFotografias[c]>0){
+			cantFotografia++;
+			
+		}
+	}
+	return cantFotografia;
+}
+//------------------------------------------------------------------------
+int obtenerPromedioPesado(int aFotografia[]){
+	int c;
+	int sumaFotografia, promPesado;
+	sumaFotografia=0;
+	for(c=0;c<FT;c++){
+		if(aFotografia[c]>1024){
+			sumaFotografia +=aFotografia[c];
+		}
+	}
+    promPesado=sumaFotografia/2;
+	return promPesado;
+}
+int obtenerPromedioMediano(int aFotografia[]){
+	int c;
+	int sumaFotografia,promMediano;
+	sumaFotografia=0;
+	for(c=0;c<FT;c++){
+		if(aFotografia[c]>300 && aFotografia[c]<=1024 ){
+			sumaFotografia +=aFotografia[c];
+		}
+	}
+	promMediano=sumaFotografia/7;
+	return promMediano;
+}
+int obtenerPromedioLigero(int aFotografia[]){
+	int c;
+	int sumaFotografia,promLigero;
+	sumaFotografia=0;
+	for(c=0;c<FT;c++){
+		if(aFotografia[c]<300 ){
+			sumaFotografia +=aFotografia[c];
+		}
+	}
+	promLigero=sumaFotografia/1;
+	return promLigero;
+}
+int obtenerPromedioMuyLigero(int aFotografia[]){
+	int c;
+	int sumaFotografia,promMuyLigero;
+	sumaFotografia=0;
+	for(c=0;c<FT;c++){
+		if(aFotografia[c]<100 ){
+			sumaFotografia +=aFotografia[c];
+		}
+	}
+	promMuyLigero=sumaFotografia/2;
+	return promMuyLigero;
+}
+
+void mostrarResultado( int cantFotografia,int promPesado,int promMediano,int promLigero,int promMuyLigero){
+	
+
+	
+    printf("Total de fotogramas       : %d kb \n",cantFotografia); 
+    if( cantFotografia ==12){
+    printf("Promedio Pesadas          : %d Kb\n",promPesado);	
+	}
+	if( cantFotografia ==12){
+		printf("Promedio Peso Medio       : %d Kb\n",promMediano);	
+	}
+	if( cantFotografia ==12){
+		printf("Promedio Ligeras          : %d Kb\n",promLigero);	
+	}
+	if( cantFotografia ==12){
+		printf("Promedio Muy ligeras      : %d Kb\n",promMuyLigero);	
+	}
+	
+	
+	
+}
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+float obtenerPromedioCarga(float aPilasCargadas[]);
+void mostrarResultados(float aPilasCargadas[],float promPilasCargadas);
+int LARGO=6;
+
+int main(int argc, char *argv[]) {
+	float aPilasCargadas[]={0.7,0.6,0.5,0.8,0.45,0.75};
+	float promPilasCargadas;
+	/* a la variable promPilasCargadas le asignamos 
+	el valor retornado por la función obtenerPromedioCarga(aPilasCargadas) */
+	promPilasCargadas=obtenerPromedioCarga(aPilasCargadas);
+
+	mostrarResultados(aPilasCargadas,promPilasCargadas);
+}
+float obtenerPromedioCarga(float aPilasCargadas[]){
+	float sumaCargasPilas=0;
+	float promPilasCargadas;
+	int i;
+	float largo=LARGO;
+	for(i=0;i<LARGO;i++){
+		sumaCargasPilas = sumaCargasPilas + aPilasCargadas[i];
+	}
+	promPilasCargadas=sumaCargasPilas / largo;
+	return promPilasCargadas;
+}
+void mostrarResultados(float aPilasCargadas[],float promCargaPilas){
+	int i;
+	for(i=0;i<LARGO;i++){
+		printf("Carga de la Pila %i  : %4.2f \n",i+1, aPilasCargadas[i]);
+	}
+	printf("\n");	
+	printf("Promedio Cargas Pilas : %4.2f \n",promCargaPilas);	
+	printf("\n");
+	printf("Numero de las Pilas bajo el Promedio \n");	
+	for(i=0;i<LARGO;i++){
+		if(aPilasCargadas[i]<=promCargaPilas){
+			printf("Número de Pila        : %i \n",i+1);
+		}
+	}		
+}

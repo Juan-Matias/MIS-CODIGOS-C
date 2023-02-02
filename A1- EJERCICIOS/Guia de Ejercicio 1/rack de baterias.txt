@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int bateria_A=5;
+int bateria_B=8;
+int bateria_C=15;
+int bateria_D=10;
+int bateria_E=2;
+
+int autonomia=40;
+int horaDiaria=24;
+int horaSemanal=168;
+	
+int obtenerCargaBateria(char tipo);
+void mostrarResuldato(float recarga_tipo_A,float recarga_tipo_B,float recarga_tipo_C,float recarga_tipo_D,float recarga_tipo_E);
+
+int main() {
+	float recarga_tipo_A=obtenerCargaBateria('A');
+	float recarga_tipo_B=obtenerCargaBateria('B');
+	float recarga_tipo_C=obtenerCargaBateria('C');
+	float recarga_tipo_D=obtenerCargaBateria('D');
+	float recarga_tipo_E=obtenerCargaBateria('E');
+	
+	mostrarResuldato(recarga_tipo_A,recarga_tipo_B,recarga_tipo_C,recarga_tipo_D,recarga_tipo_E);
+	
+}
+int obtenerCargaBateria(char tipo){
+	
+	float resultado;
+	float res;
+	float res2;
+
+	switch(tipo) {
+	case 'A':
+	res=autonomia/bateria_A;
+	res2=horaDiaria/res;
+	resultado=horaSemanal/res2;
+	return resultado;
+	
+	case 'B':
+	res=autonomia/bateria_B;
+	res2=horaDiaria/res;
+	resultado=horaSemanal/res2;
+	return resultado;
+	
+	case 'C':
+	res=autonomia/bateria_C;
+	res2=horaDiaria/res;
+	resultado=horaSemanal/res2;
+	return resultado;
+	
+	case 'D':
+	res=autonomia/bateria_D;
+	res2=horaDiaria/res;
+	resultado=horaSemanal/res2;
+	return resultado;
+	
+	case 'E':	
+	res=autonomia/bateria_E;
+	res2=horaDiaria/res;
+	resultado=horaSemanal/res2;
+	return resultado;
+	
+}
+	
+}
+
+void mostrarResuldato(float recarga_tipo_A,float recarga_tipo_B,float recarga_tipo_C,float recarga_tipo_D,float recarga_tipo_E){
+	printf("CANTIDAD DE CAMBIO DE BATERIA POR SEMANA\n");
+	printf("----------------------------------------\n");
+	printf(" Bateria   [A] : %5.1f \n",recarga_tipo_A);
+	printf(" Bateria   [B] : %5.1f \n",recarga_tipo_B);
+	printf(" Bateria   [C] : %5.1f \n",recarga_tipo_C);
+	printf(" Bateria   [D] : %5.1f \n",recarga_tipo_D);
+	printf(" Bateria   [E] : %5.1f \n",recarga_tipo_E);
+	
+	
+}

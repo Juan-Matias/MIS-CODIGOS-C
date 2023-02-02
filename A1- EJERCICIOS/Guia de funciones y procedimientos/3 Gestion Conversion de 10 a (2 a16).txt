@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int residuo[10];
+int obtenerConversion(int num,int base,int residuo[]);
+void mostrarResultados(int num,int base,int residuo[],int Convertir);
+
+int main()
+{
+  int num,base,i;
+  int residuo[10];
+  printf("Convierte un numero de base 10 a(2 a 16)\n");
+  printf("Escribe el numero de base 10\n");
+  scanf("%d",&num);
+  printf("Escribe a la base que se desea convertir\n");
+  scanf("%d",&base);
+  
+  int Convertir=obtenerConversion(num,base,residuo); 
+  mostrarResultados(num,base,residuo,Convertir);
+  
+}
+
+int obtenerConversion(int num,int base,int residuo[]){
+   int c;
+     for(c=0;num>0;c++){
+        residuo[c]=num%base; 
+        num/=base; 
+        }
+     return c;
+}
+void mostrarResultados(int num,int base,int residuo[],int Convertir){
+	printf("\nEl numero es 	 :%d\n",num);
+	printf("La Base es	 :%d\n",base);
+	int i;
+	for(i=Convertir-1;i>=0;i--){
+        printf("%d ",residuo[i]);
+        }
+        printf("\n\n");
+}

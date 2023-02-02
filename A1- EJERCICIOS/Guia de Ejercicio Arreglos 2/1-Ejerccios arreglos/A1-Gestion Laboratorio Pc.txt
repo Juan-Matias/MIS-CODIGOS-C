@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int dM=4;
+int dPC=5;
+char aPC[4][5];
+
+void mostrarPCs(char aPC[4][5]);
+int obtenerCantidadPC(char aPC[dM][dPC],char tipoPC);
+float obtenerPorcPC(int cantidadPC);
+void mostrarResultados(int cantidadPC,float porcPC,char tipoPC);
+
+int main() {
+		char aPC[4][5] = {
+		{'O','N','N','O','O'},
+		{'N','N','O','N','N'},
+		{'N','O','N','O','O'},
+		{'O','O','N','N','O'}	
+	};
+	//llama al procedimiento
+	mostrarPCs(aPC);
+	
+	int cantidadPC=obtenerCantidadPC(aPC,'N');
+	float porcPC =obtenerPorcPC(cantidadPC);
+	mostrarResultados(cantidadPC,porcPC,'N');
+	
+}
+void mostrarPCs(char aPC[dM][dPC]){
+	int f,c;
+	for(f=0;f<dM;f++){
+		//printf("Meson %i \n",f+1);
+		for(c=0;c<dPC;c++){
+			printf("[%c]",aPC[f][c]);
+		}
+		printf("\n");
+	}
+}
+int obtenerCantidadPC(char aPC[dM][dPC],char tipoPC){
+		int f,c;
+		int cantidadPC=0;
+		
+	for(f=0;f<dM;f++){
+			for(c=0;c<dPC;c++){
+				if(aPC[f][c]==tipoPC){
+				cantidadPC ++;
+			}
+		}
+	}
+	return cantidadPC;
+
+	
+}
+
+float obtenerPorcPC(int cantidadPC){
+	float porcPC;
+	float Mesones=dM;
+	float pcs=dPC;
+	float cantidadPCs=cantidadPC;
+	porcPC=cantidadPCs / (Mesones * pcs);
+	return porcPC;
+}
+void mostrarResultados(int cantidadPC,float porcPC,char tipoPC){
+	
+	printf(" Estadistica de PC  : %s \n",tipoPC=='N'?"NO Operativo":"Operativo");
+	printf(" Cantidad PC 	    : %i \n",cantidadPC);
+	printf(" Porcentaje PC 	    : %6.2f\n",porcPC);
+}
